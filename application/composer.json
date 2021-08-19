@@ -1,0 +1,12 @@
+{
+    "name": "divae/application",
+    "authors": [
+        {
+            "name": "David",
+            "email": "david@sitelicon.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    }
+}
