@@ -39,6 +39,14 @@ class Enubes extends CI_Controller
         echo json_encode($response);
     }
 
+    public function get_user_email()
+    {
+        $post_data = $this->input->post();
+        $response = $this->user->get_user_email($post_data);
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+
     public function get_users()
     {
         $response = $this->user->get_users();

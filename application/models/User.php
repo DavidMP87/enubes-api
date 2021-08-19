@@ -39,6 +39,18 @@ class User extends CI_Model
         }
     }
 
+    public function get_user_email($data)
+    {
+        $email = $data['email'];
+        $result = $this->db->select('u.*,ue.confirmed,ur.r_admin,ur.r_create,ur.r_update,ur.r_delete,ur.r_change_state,ur.r_edit_roles')
+            ->join('user_roles ur', 'ur.id_user = u.id')
+            ->join('user_email ue', 'ue.id_user = u.id')
+            ->where('u.email', $email)
+            ->get('users u')->result();
+
+        return ['user' => $result];
+    }
+
     public function get_users()
     {
         $result = $this->db->select('u.*,ue.confirmed,ur.r_admin,ur.r_create,ur.r_update,ur.r_delete,ur.r_change_state,ur.r_edit_roles')
