@@ -119,4 +119,12 @@ class Enubes extends CI_Controller
         header('Content-Type: application/json');
         echo json_encode($response);
     }
+
+    public function increment_visit()
+    {
+        $post_data = $this->input->post();
+        $response = $this->post->increment_visits($post_data);
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
 }

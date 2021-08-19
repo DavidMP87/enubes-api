@@ -50,4 +50,13 @@ class Post extends CI_Model
         $responseUsers = $this->db->select('*')->get('users')->result();
         return ['posts' => $responsePosts, 'users' => $responseUsers];
     }
+
+    public function increment_visits($data)
+    {
+        $id = $data['id'];
+        $result = $this->db->select('visits')->where('id', $id)->get('posts')->result();
+        $visitas = $result[0]->visits + 1;
+        $this->db->where('id', $id)->update('posts', ['visits' => $visitas]);
+        return ['post' => 1];
+    }
 }
